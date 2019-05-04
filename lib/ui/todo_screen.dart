@@ -46,12 +46,19 @@ class TodoScreenState extends State {
             return snapshot.data.documents.length == 0 ? Center(child: Text('No data found...')):
                   ListView(
                     children: snapshot.data.documents.map((DocumentSnapshot document) {
-                      return CheckboxListTile(
-                        title: Text(document['title']),
-                        value: document['done'],
-                        onChanged: (bool value) {
-                          FirestoreUtils.update(document.documentID, value);
-                        },
+                      return Column(
+                        children: <Widget>[
+                          Divider(
+                            height: 5.0,
+                          ),
+                          CheckboxListTile(
+                            title: Text(document['title']),
+                            value: document['done'],
+                            onChanged: (bool value) {
+                              FirestoreUtils.update(document.documentID, value);
+                            },
+                          ),
+                        ],
                       );
                     }).toList(),
                   );
@@ -74,12 +81,19 @@ class TodoScreenState extends State {
                 ListView(
                     children: snapshot.data.documents
                         .map((DocumentSnapshot document) {
-                      return CheckboxListTile(
-                        title: Text(document['title']),
-                        value: document['done'],
-                        onChanged: (bool value) {
-                          FirestoreUtils.update(document.documentID, value);
-                        },
+                      return Column(
+                        children: <Widget>[
+                          Divider(
+                            height: 5.0,
+                          ),
+                          CheckboxListTile(
+                            title: Text(document['title']),
+                            value: document['done'],
+                            onChanged: (bool value) {
+                              FirestoreUtils.update(document.documentID, value);
+                            },
+                          ),
+                        ],
                       );
                     }).toList(),
                   );
